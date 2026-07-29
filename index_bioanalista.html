@@ -849,31 +849,31 @@
     (function verificarSesion() {
       const sesion = sessionStorage.getItem('labUser');
       if (!sesion) {
-        window.location.href = 'indexlogin.html';
+        window.location.href = 'index.html';
         return;
       }
       try {
         const datos = JSON.parse(sesion);
         if (!datos.rol || !datos.timestamp || Date.now() - datos.timestamp > 28800000 || datos.rol !== 'bioanalista') {
           sessionStorage.removeItem('labUser');
-          window.location.href = 'indexlogin.html';
+          window.location.href = 'index.html';
           return;
         }
       } catch (e) {
         sessionStorage.removeItem('labUser');
-        window.location.href = 'indexlogin.html';
+        window.location.href = 'index.html';
         return;
       }
 
       document.getElementById('btnCerrarSesion').addEventListener('click', function() {
         sessionStorage.removeItem('labUser');
-        window.location.replace('indexlogin.html');
+        window.location.replace('index.html');
       });
 
       window.history.pushState(null, '', window.location.href);
       window.addEventListener('popstate', function() {
         if (!sessionStorage.getItem('labUser')) {
-          window.location.replace('indexlogin.html');
+          window.location.replace('index.html');
         } else {
           window.history.pushState(null, '', window.location.href);
         }
