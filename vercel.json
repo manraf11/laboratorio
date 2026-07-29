@@ -7,7 +7,7 @@
     },
     {
       "src": "/",
-      "dest": "/indexlogin.html"
+      "dest": "/index.html"
     },
     {
       "src": "/(.*)",
