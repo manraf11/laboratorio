@@ -513,7 +513,6 @@
         padding: 3px 8px;
         margin-left: 4px;
       }
-      /* Para celdas con múltiples botones */
       table td:has(.btn-imprimir, .btn-whatsapp) {
         flex-wrap: wrap;
         justify-content: flex-end;
@@ -765,12 +764,12 @@
   </script>
 
   <script type="module">
-    import Cl_vAdmin from "./dist/views/Cl_vAdmin.js";
-    import Cl_vExamen from "./dist/views/Cl_vExamen.js";
-    import Cl_cExamen from "./dist/controllers/Cl_cExamen.js";
-    import Cl_cLaboratorioAdmin from "./dist/controllers/Cl_cLaboratorioAdmin.js";
-    import Cl_sEstudio from "./dist/services/Cl_sEstudio.js";
-    import Cl_mEstudio from "./dist/models/Cl_mEstudio.js";
+    import Cl_vAdmin from "/dist/views/Cl_vAdmin.js";
+    import Cl_vExamen from "/dist/views/Cl_vExamen.js";
+    import Cl_cExamen from "/dist/controllers/Cl_cExamen.js";
+    import Cl_cLaboratorioAdmin from "/dist/controllers/Cl_cLaboratorioAdmin.js";
+    import Cl_sEstudio from "/dist/services/Cl_sEstudio.js";
+    import Cl_mEstudio from "/dist/models/Cl_mEstudio.js";
     
     function inicializarNavegacionPorTabs() {
       const botonesNav = document.querySelectorAll('.nav-item');

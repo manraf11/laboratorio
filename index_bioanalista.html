@@ -881,29 +881,30 @@
     })();
   </script>
 
-  <script type="module">
-    import Cl_vBioanalista from "./dist/views/Cl_vBioanalista.js";
-    import Cl_cLaboratorioBio from "./dist/controllers/Cl_cLaboratorioBio.js";
-    import Cl_sEstudio from "./dist/services/Cl_sEstudio.js";
+ <!-- Al final del archivo, reemplazar el script type="module" -->
+<script type="module">
+  import Cl_vBioanalista from "/dist/views/Cl_vBioanalista.js";
+  import Cl_cLaboratorioBio from "/dist/controllers/Cl_cLaboratorioBio.js";
+  import Cl_sEstudio from "/dist/services/Cl_sEstudio.js";
 
-    async function iniciar() {
-      try {
-        await Cl_sEstudio.cargarCatálogo();
-        
-        document.getElementById("cargando").style.display = "none";
-        document.getElementById("contenido").style.display = "block";
-        
-        const vista = new Cl_vBioanalista();
-        const controlador = new Cl_cLaboratorioBio(vista);
-        
-        console.log("Aplicación iniciada");
-      } catch (error) {
-        console.error("Error:", error);
-        document.getElementById("cargando").innerHTML = '<p style="color: red;">Error al cargar. <button onclick="location.reload()">Reintentar</button></p>';
-      }
+  async function iniciar() {
+    try {
+      await Cl_sEstudio.cargarCatálogo();
+      
+      document.getElementById("cargando").style.display = "none";
+      document.getElementById("contenido").style.display = "block";
+      
+      const vista = new Cl_vBioanalista();
+      const controlador = new Cl_cLaboratorioBio(vista);
+      
+      console.log("Aplicación iniciada");
+    } catch (error) {
+      console.error("Error:", error);
+      document.getElementById("cargando").innerHTML = '<p style="color: red;">Error al cargar. <button onclick="location.reload()">Reintentar</button></p>';
     }
-    
-    iniciar();
-  </script>
+  }
+  
+  iniciar();
+</script>
 </body>
 </html>

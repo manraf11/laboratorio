@@ -3,10 +3,14 @@
   "version": "2.0.0",
   "type": "module",
   "scripts": {
-        "build": "node build.js",
+    "build": "tsc",
     "vercel-build": "npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.111.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
   }
 }

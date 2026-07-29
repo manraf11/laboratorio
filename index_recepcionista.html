@@ -778,53 +778,54 @@
     })();
   </script>
 
-  <script type="module">
-    import Cl_vRecepcion from "./dist/views/Cl_vRecepcion.js";
-    import Cl_vExamen from "./dist/views/Cl_vExamen.js";
-    import Cl_cExamen from "./dist/controllers/Cl_cExamen.js";
-    import Cl_cLaboratorioRec from "./dist/controllers/Cl_cLaboratorioRec.js";
-    import Cl_sEstudio from "./dist/services/Cl_sEstudio.js";
-    import Cl_mEstudio from "./dist/models/Cl_mEstudio.js";
+ <!-- Al final del archivo, reemplazar el script type="module" -->
+<script type="module">
+  import Cl_vRecepcion from "/dist/views/Cl_vRecepcion.js";
+  import Cl_vExamen from "/dist/views/Cl_vExamen.js";
+  import Cl_cExamen from "/dist/controllers/Cl_cExamen.js";
+  import Cl_cLaboratorioRec from "/dist/controllers/Cl_cLaboratorioRec.js";
+  import Cl_sEstudio from "/dist/services/Cl_sEstudio.js";
+  import Cl_mEstudio from "/dist/models/Cl_mEstudio.js";
+  
+  function inicializarNavegacionPorTabs() {
+    const botonesNav = document.querySelectorAll('.nav-item');
+    const moduloFiltros = document.getElementById('modulo-filtros');
     
-    function inicializarNavegacionPorTabs() {
-      const botonesNav = document.querySelectorAll('.nav-item');
-      const moduloFiltros = document.getElementById('modulo-filtros');
-      
-      function activarModulo(moduloId) {
-        if (moduloFiltros) moduloFiltros.classList.remove('active-modulo');
-        if (moduloId === 'filtros' && moduloFiltros) moduloFiltros.classList.add('active-modulo');
-        botonesNav.forEach(btn => {
-          const btnModulo = btn.getAttribute('data-modulo');
-          if (btnModulo === moduloId) btn.classList.add('active');
-          else btn.classList.remove('active');
-        });
-      }
+    function activarModulo(moduloId) {
+      if (moduloFiltros) moduloFiltros.classList.remove('active-modulo');
+      if (moduloId === 'filtros' && moduloFiltros) moduloFiltros.classList.add('active-modulo');
       botonesNav.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const moduloId = btn.getAttribute('data-modulo');
-          if (moduloId) activarModulo(moduloId);
-        });
+        const btnModulo = btn.getAttribute('data-modulo');
+        if (btnModulo === moduloId) btn.classList.add('active');
+        else btn.classList.remove('active');
       });
-      activarModulo('filtros');
     }
+    botonesNav.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const moduloId = btn.getAttribute('data-modulo');
+        if (moduloId) activarModulo(moduloId);
+      });
+    });
+    activarModulo('filtros');
+  }
 
-    async function iniciarAplicacion() {
-      try {
-        await Cl_sEstudio.cargarCatálogo();
-        document.getElementById("cargando").style.display = "none";
-        document.getElementById("contenidoPrincipal").style.display = "block";
-        inicializarNavegacionPorTabs();
-        const vRec = new Cl_vRecepcion();
-        const vExamen = new Cl_vExamen();
-        const cExamen = new Cl_cExamen(vExamen);
-        const cLaboratorioRec = new Cl_cLaboratorioRec(vRec, cExamen);
-        console.log("Aplicación Recepcionista iniciada");
-      } catch (error) {
-        console.error(error);
-        document.getElementById("cargando").innerHTML = '<p style="color:red;">Error al cargar. <button onclick="location.reload()">Reintentar</button></p>';
-      }
+  async function iniciarAplicacion() {
+    try {
+      await Cl_sEstudio.cargarCatálogo();
+      document.getElementById("cargando").style.display = "none";
+      document.getElementById("contenidoPrincipal").style.display = "block";
+      inicializarNavegacionPorTabs();
+      const vRec = new Cl_vRecepcion();
+      const vExamen = new Cl_vExamen();
+      const cExamen = new Cl_cExamen(vExamen);
+      const cLaboratorioRec = new Cl_cLaboratorioRec(vRec, cExamen);
+      console.log("Aplicación Recepcionista iniciada");
+    } catch (error) {
+      console.error(error);
+      document.getElementById("cargando").innerHTML = '<p style="color:red;">Error al cargar. <button onclick="location.reload()">Reintentar</button></p>';
     }
-    iniciarAplicacion();
-  </script>
+  }
+  iniciarAplicacion();
+</script>
 </body>
 </html>
