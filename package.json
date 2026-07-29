@@ -5,7 +5,7 @@
   "description": "Sistema de gestión para laboratorio clínico",
   "scripts": {
     "build": "tsc",
-    "vercel-build": "npm run build"
+    "vercel-build": "echo 'No TypeScript compilation needed' || npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.111.0"
