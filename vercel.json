@@ -7,11 +7,11 @@
     },
     {
       "src": "/",
-      "dest": "/public/indexlogin.html"
+      "dest": "/indexlogin.html"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/$1"
+      "dest": "/$1"
     }
   ]
 }
